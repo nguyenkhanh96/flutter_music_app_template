@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'base/di/locator.dart';
 import 'main_viewmodel.dart';
@@ -18,10 +19,20 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider<MainVM>(create: (_) => MainVM())],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'FULL API - RETROFIT',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'), // English
+          Locale('es'), // Spanish
+        ],
         home: const HomePage(),
       ),
     );
