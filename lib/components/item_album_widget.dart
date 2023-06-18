@@ -26,8 +26,8 @@ class ItemAlbumbWidget extends StatelessWidget {
               boxShadow: const [
                 BoxShadow(
                   color: Color.fromRGBO(255, 165, 0, 0.5),
-                  offset: Offset(1, 10),
-                  blurRadius: 25,
+                  offset: Offset(1, 2),
+                  blurRadius: 2,
                   spreadRadius: 1,
                 )
               ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'base/di/locator.dart';
+import 'generated/l10n.dart';
 import 'main_viewmodel.dart';
 import 'pages/home_page.dart';
 
@@ -25,14 +26,12 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         localizationsDelegates: const [
+          S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const [
-          Locale('en'), // English
-          Locale('es'), // Spanish
-        ],
+        supportedLocales: S.delegate.supportedLocales,
         home: const HomePage(),
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music_app_template/components/item_album_widget.dart';
 import '../base/base_page.dart';
+import '../components/item_music_widget.dart';
 import '../gen/assets.gen.dart';
+import '../generated/l10n.dart';
 import 'home_viewmodel.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,16 +14,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with MixinBasePage<HomeVM> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        leading: Container(
-          margin: const EdgeInsets.only(left: 30),
-          child: Assets.icons.icDrawer.svg(),
+        leading: InkWell(
+          onTap: () {
+            if (_scaffoldKey.currentState?.isDrawerOpen ?? false) {
+              _scaffoldKey.currentState?.openEndDrawer();
+            } else {
+              _scaffoldKey.currentState?.openDrawer();
+            }
+          },
+          child: Container(
+            margin: const EdgeInsets.only(left: 30),
+            child: Assets.icons.icDrawer.svg(),
+          ),
         ),
         actions: [
           Container(
@@ -29,24 +43,60 @@ class _HomePageState extends State<HomePage> with MixinBasePage<HomeVM> {
             child: Assets.icons.icSearch.svg(),
           )
         ],
-        title: const Text(
-          "Music Players",
-          style: TextStyle(
+        title: Text(
+          S.of(context).txt_music_player,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
             fontSize: 15,
           ),
         ),
       ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              // margin: const EdgeInsets.only(bottom: 2),
+              decoration: const BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(S.of(context).txt_no_data),
+            ),
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: builder(
         () => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0, top: 8.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, top: 8.0),
               child: Text(
-                'Top Albumb',
-                style: TextStyle(
+                S.of(context).txt_top_album,
+                style: const TextStyle(
                   fontSize: 23.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -74,24 +124,35 @@ class _HomePageState extends State<HomePage> with MixinBasePage<HomeVM> {
             const SizedBox(
               height: 10.0,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 30.0, bottom: 8.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, bottom: 8.0),
               child: Text(
-                'Recommended',
-                style: TextStyle(
+                S.of(context).txt_recommended,
+                style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            SizedBox(
-                height: 240,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30.0, right: 10.0),
-                  child: SizedBox(
-                      // width: MediaQuery.of(context).size.width,
-                      child: ListView()),
-                ))
+            const SizedBox(
+              height: 16,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 30.0, right: 10.0),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: provider.listViewMusic.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ItemMusicWidget(
+                      model: provider.listViewMusic[index],
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),

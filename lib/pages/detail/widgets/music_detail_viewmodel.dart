@@ -1,48 +1,13 @@
-import 'package:flutter_music_app_template/models/music_model.dart';
+import '../../../base/base_viewmodel.dart';
+import '../../../models/music_model.dart';
 
-import '../base/base_viewmodel.dart';
-import '../models/albumb_model.dart';
-
-class HomeVM extends BaseViewModel {
-  List<AlbumModel> listDataAlbum = [];
+class MusicDetailVM extends BaseViewModel {
+  // list music
   List<MusicModel> listViewMusic = [];
 
   @override
   void onInit() {
-    fetchDataAlbumAll();
     fetchMusicAll();
-  }
-
-  Future fetchDataAlbumAll() async {
-    listDataAlbum.add(
-      AlbumModel(
-          id: 0,
-          title: 'HIP HOP',
-          description: 'MUSIC',
-          imageUrl: 'assets/images/unsplash_1obo.png'),
-    );
-    listDataAlbum.add(
-      AlbumModel(
-          id: 1,
-          title: 'BOLERO',
-          description: 'MUSIC',
-          imageUrl: 'assets/images/unsplash_2obo.png'),
-    );
-    listDataAlbum.add(
-      AlbumModel(
-          id: 2,
-          title: 'BOLERO',
-          description: 'MUSIC',
-          imageUrl: 'assets/images/unsplash_1obo.png'),
-    );
-    listDataAlbum.add(
-      AlbumModel(
-          id: 3,
-          title: 'BOLERO',
-          description: 'MUSIC',
-          imageUrl: 'assets/images/unsplash_2obo.png'),
-    );
-    notifyListeners();
   }
 
   Future<void> fetchMusicAll() async {

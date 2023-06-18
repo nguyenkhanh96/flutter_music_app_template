@@ -25,7 +25,11 @@ class $AssetsIconsGen {
       const SvgGenImage('assets/icons/ic_ellipsis.svg');
 
   /// File path: assets/icons/ic_menu.png
-  AssetGenImage get icMenu => const AssetGenImage('assets/icons/ic_menu.png');
+  AssetGenImage get icMenuPng =>
+      const AssetGenImage('assets/icons/ic_menu.png');
+
+  /// File path: assets/icons/ic_menu.svg
+  SvgGenImage get icMenuSvg => const SvgGenImage('assets/icons/ic_menu.svg');
 
   /// File path: assets/icons/ic_next.svg
   SvgGenImage get icNext => const SvgGenImage('assets/icons/ic_next.svg');
@@ -37,8 +41,16 @@ class $AssetsIconsGen {
   SvgGenImage get icSearch => const SvgGenImage('assets/icons/ic_search.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [icBack, icDrawer, icEllipsis, icMenu, icNext, icPlay, icSearch];
+  List<dynamic> get values => [
+        icBack,
+        icDrawer,
+        icEllipsis,
+        icMenuPng,
+        icMenuSvg,
+        icNext,
+        icPlay,
+        icSearch
+      ];
 }
 
 class $AssetsImagesGen {
