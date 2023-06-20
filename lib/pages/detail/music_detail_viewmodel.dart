@@ -63,19 +63,6 @@ class MusicDetailVM extends BaseViewModel {
           pathMusic: 'yeu.mp3',
           isLoadSound: false),
     );
-
-    listViewMusic.add(
-      MusicModel(
-          id: 5,
-          type: 0,
-          title: 'The songs 5',
-          description: 'MUSIC',
-          time: '10.2',
-          author: 'MTP',
-          imageUrl: 'assets/images/picture_2.png',
-          pathMusic: 'doraemon.mp3',
-          isLoadSound: false),
-    );
     notifyListeners();
   }
 }

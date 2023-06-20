@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_music_app_template/components/item_album_widget.dart';
+import 'package:flutter_music_app_template/pages/detail/widgets/item_music_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../../../components/item_album_widget.dart';
-import '../../../components/item_music_widget.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../models/albumb_model.dart';
 import '../../../models/music_model.dart';
@@ -26,6 +26,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -50,46 +51,54 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
       ),
       body: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
-                  child: SizedBox(
-                      height: 340,
-                      child: ItemAlbumbWidget(
-                        model: widget.albumModel,
-                      ))),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 30.0, right: 10.0),
-                  child: Selector<MusicDetailVM, List<MusicModel>>(
-                    selector: (_, vm) => vm.listViewMusic,
-                    shouldRebuild: (data1, data2) => true,
-                    builder: (_, data, __) {
-                      return ListView.builder(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: data.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ItemMusicWidget(
-                            model: data[index],
-                            // callback: (MusicModel value) {
-                            //   setState(() {
-                            //     playing = !playing;
-                            //   });
-                            // },
-                          );
-                        },
-                      );
-                    },
+          Image.asset(
+            'assets/images/img_detail_bg.png',
+            width: double.infinity,
+            fit: BoxFit.contain,
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 100),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(left: 30.0),
+                    child: SizedBox(
+                        height: 340,
+                        child: ItemAlbumbWidget(
+                          model: widget.albumModel,
+                        ))),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30.0, right: 10.0),
+                    child: Selector<MusicDetailVM, List<MusicModel>>(
+                      selector: (_, vm) => vm.listViewMusic,
+                      shouldRebuild: (data1, data2) => true,
+                      builder: (_, data, __) {
+                        return ListView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ItemMusicWidget(
+                              model: data[index],
+                              callback: (MusicModel value) {
+                                setState(() {
+                                  playing = !playing;
+                                });
+                              },
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           AnimatedPositioned(
             width: MediaQuery.of(context).size.width,
@@ -119,7 +128,7 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                           width: 40,
                           height: 40,
                           child: Image.asset(
-                            'assets/images/unsplash_PDX_a_82obo.png',
+                            'assets/images/unsplash_1obo.png',
                             fit: BoxFit.cover,
                           ),
                         )),
@@ -128,13 +137,13 @@ class _MusicDetailPageState extends State<MusicDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'The last best3',
+                          'The music song',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15.0,
                           ),
                         ),
-                        Text('jack'),
+                        Text('MTP'),
                       ],
                     ),
                     Row(

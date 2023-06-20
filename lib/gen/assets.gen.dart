@@ -56,6 +56,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/img_detail_bg.png
+  AssetGenImage get imgDetailBg =>
+      const AssetGenImage('assets/images/img_detail_bg.png');
+
   /// File path: assets/images/img_handcaset.png
   AssetGenImage get imgHandcaset =>
       const AssetGenImage('assets/images/img_handcaset.png');
@@ -86,6 +90,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        imgDetailBg,
         imgHandcaset,
         imgHandphone,
         picture1,

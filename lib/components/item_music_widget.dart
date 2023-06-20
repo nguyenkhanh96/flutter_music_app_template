@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../gen/assets.gen.dart';
 import '../models/albumb_model.dart';
 import '../models/music_model.dart';
-import '../pages/detail/widgets/music_detail_page.dart';
+import '../pages/detail/music_detail_page.dart';
 
 class ItemMusicWidget extends StatelessWidget {
   final MusicModel model;

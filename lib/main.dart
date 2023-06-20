@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_music_app_template/pages/detail/music_detail_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'base/di/locator.dart';
 import 'generated/l10n.dart';
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider<MainVM>(create: (_) => MainVM())],
+      providers: [
+        ChangeNotifierProvider<MainVM>(create: (_) => MainVM()),
+        ChangeNotifierProvider<MusicDetailVM>(create: (_) => MusicDetailVM())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'FULL API - RETROFIT',

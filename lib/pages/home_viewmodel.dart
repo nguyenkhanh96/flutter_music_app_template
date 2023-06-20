@@ -111,6 +111,71 @@ class HomeVM extends BaseViewModel {
           pathMusic: 'doraemon.mp3',
           isLoadSound: false),
     );
+
+    listViewMusic.add(
+      MusicModel(
+          id: 6,
+          type: 0,
+          title: 'The songs 6',
+          description: 'MUSIC',
+          time: '10.2',
+          author: 'MTP',
+          imageUrl: 'assets/images/picture_3.png',
+          pathMusic: 'doraemon.mp3',
+          isLoadSound: false),
+    );
+
+    listViewMusic.add(
+      MusicModel(
+          id: 7,
+          type: 0,
+          title: 'The songs 7',
+          description: 'MUSIC',
+          time: '10.2',
+          author: 'MTP',
+          imageUrl: 'assets/images/picture_1.png',
+          pathMusic: 'doraemon.mp3',
+          isLoadSound: false),
+    );
+
+    listViewMusic.add(
+      MusicModel(
+          id: 8,
+          type: 0,
+          title: 'The songs 8',
+          description: 'MUSIC',
+          time: '10.2',
+          author: 'MTP',
+          imageUrl: 'assets/images/picture_2.png',
+          pathMusic: 'doraemon.mp3',
+          isLoadSound: false),
+    );
+
+    listViewMusic.add(
+      MusicModel(
+          id: 9,
+          type: 0,
+          title: 'The songs 9',
+          description: 'MUSIC',
+          time: '10.2',
+          author: 'MTP',
+          imageUrl: 'assets/images/picture_1.png',
+          pathMusic: 'doraemon.mp3',
+          isLoadSound: false),
+    );
+
+    listViewMusic.add(
+      MusicModel(
+          id: 10,
+          type: 0,
+          title: 'The songs 10',
+          description: 'MUSIC',
+          time: '10.2',
+          author: 'MTP',
+          imageUrl: 'assets/images/picture_2.png',
+          pathMusic: 'doraemon.mp3',
+          isLoadSound: false),
+    );
     notifyListeners();
   }
 }
